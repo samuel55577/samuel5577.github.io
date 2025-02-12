@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Cormorant+Garamond:wght@400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primario: #fff;
+    --fondo: #ffebf2;
+    --fondo-sobre: #ffe3ed;
+    --solapa-sobre: #ffccd5;
+    --cuerpo-sobre: #ffc1d1;
+    --sombra: rgba(0, 0, 0, 0.2);
+    --texto: #5c2a3d;
+    --corazon: #ff477e;
+}
+
+body {
+    background: var(--fondo);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    font-family: "Cormorant Garamond", serif;
+}
+
+h1 {
+    font-size: 50px;
+    margin: 30px 0;
+    color: #d6336c;
+    text-align: center;
+    font-family: "Dancing Script", cursive;
+}
+
+.contenedor {
+    width: 400px;
+    position: relative;
+}
+
+.envoltura-sobre {
+    background-color: var(--fondo-sobre);
+    border-radius: 15px;
+    box-shadow: 0 0 40px var(--sombra);
+    overflow: hidden;
+}
+
+.sobre {
+    position: relative;
+    height: 300px;
+}
+
+.corazon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    background-color: var(--corazon);
+    transform: translate(-50%, -50%) rotate(45deg);
+    z-index: 5;
+    cursor: pointer;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.corazon::before,
+.corazon::after {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: var(--corazon);
+    border-radius: 50%;
+}
+
+.corazon::before {
+    top: -15px;
+}
+
+.corazon::after {
+    left: 15px;
+}
+
+/* Ocultar el corazón cuando se muestre la carta */
+.corazon.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.carta {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 300px;
+    background-color: var(--primario);
+    padding: 20px;
+    box-shadow: 0 0 5px var(--sombra);
+    border-radius: 10px;
+    overflow-y: scroll;
+    transform: translateY(100%);
+    transition: transform 0.5s ease-in-out;
+}
+
+.carta.mostrar {
+    transform: translateY(0);
+}
+
+.contenido-scroll {
+    height: 500px;
+    font-size: 24px;
+    line-height: 1.8;
+    color: var(--texto);
+    text-align: justify;
+}
